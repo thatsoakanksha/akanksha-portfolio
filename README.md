@@ -35,4 +35,4 @@ npx serve .
 - `main.js` — Three.js world + character + interactions
 
 ---
-Built in *Creative Mode* by [@iamAbhi-916](https://github.com/iamAbhi-916).
+
