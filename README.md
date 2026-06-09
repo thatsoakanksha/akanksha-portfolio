@@ -2,7 +2,7 @@
 
 A creative, Minecraft-styled portfolio built for **[Akanksha Jha](https://www.linkedin.com/in/akankshajha97/)** — Strategic Consultant at **PwC**, with a background in **Design & Marketing at ISB** and an **MBA from Brunel University London**.
 
-🌍 **Live:** 
+🌍 **Live:** https://thatsoakanksha.github.io/akanksha-portfolio/
 ## ✨ Features
 - 🎮 Fully **Minecraft-styled** UI (pixel fonts, blocky shadows, dirt/grass panels, HUD with hearts + XP)
 - 🧍 **Voxel 3D character** built procedurally with Three.js (no asset downloads)
