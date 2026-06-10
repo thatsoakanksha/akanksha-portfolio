@@ -315,28 +315,13 @@ document.querySelectorAll('.skin-pill').forEach(btn => {
   });
 });
 
-/* Quest cards — morph hero, scroll up so user SEES it, then scroll back */
-document.querySelectorAll('.quest-block').forEach(btn => {
-  btn.addEventListener('click', (e) => {
+/* Quest flip cards — flip on click, also morph the hero silently */
+document.querySelectorAll('.quest-flip').forEach(card => {
+  card.addEventListener('click', (e) => {
     e.preventDefault();
-    const s = btn.dataset.skin;
-    if (!s) return;
-
-    // remember current scroll position
-    const returnY = window.scrollY;
-    const hero = document.getElementById('hero');
-    const heroVisible = hero.getBoundingClientRect().bottom > 100;
-
-    // morph immediately
-    setSkin(s);
-
-    // if hero isn't on screen, fly up to it briefly, then back
-    if (!heroVisible) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(() => {
-        window.scrollTo({ top: returnY, behavior: 'smooth' });
-      }, 2400);
-    }
+    const s = card.dataset.skin;
+    card.classList.toggle('flipped');
+    if (s && card.classList.contains('flipped')) setSkin(s);
   });
 });
 
@@ -376,7 +361,7 @@ const io = new IntersectionObserver((entries) => {
   }
 }, { threshold: 0.08 });
 
-document.querySelectorAll('.panel, .quest-block, .ach, .realm, .dirt-card, .stats-card, .extra-card').forEach(el => {
+document.querySelectorAll('.panel, .quest-flip, .ach, .realm, .dirt-card, .stats-card, .extra-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(30px)';
   el.style.transition = 'opacity .8s ease, transform .8s ease';

@@ -120,58 +120,151 @@
   <section id="experience" class="panel">
     <div class="panel-inner">
       <h2 class="section-title">⚔️ XP Log — Tap a quest to morph the hero</h2>
+      <p class="muted">Click any quest card to flip it &amp; reveal the outfit · Click again to flip back.</p>
       <div class="quest-grid">
-        <button class="quest-block" data-skin="pwc" style="--accent:#ff7900">
-          <div class="quest-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/PricewaterhouseCoopers_Logo.svg" alt="PwC" loading="lazy" /></div>
-          <div class="quest-title">PwC</div>
-          <div class="quest-sub">Digital Strategy Consultant</div>
-          <div class="quest-dates">Jan 2020 → May 2023 · India</div>
-          <ul class="quest-bullets">
-            <li><b>+27%</b> advisory revenue via <b>Power BI</b> models for C-level stakeholders</li>
-            <li><b>Fortune 100</b> pitch creatives in <b>Illustrator</b> for multi-million $ deals</li>
-            <li><b>+35%</b> client engagement with <b>Premiere Pro</b> + <b>Adobe Animate</b> demos (Google, SAP)</li>
-          </ul>
-          <div class="quest-meta">Boss Fight · Cleared 🟢</div>
-        </button>
 
-        <button class="quest-block" data-skin="isb" style="--accent:#0a2d8f">
-          <div class="quest-logo"><img src="https://www.isb.edu/apple-touch-icon.png" alt="ISB" loading="lazy" /></div>
-          <div class="quest-title">Indian School of Business</div>
-          <div class="quest-sub">Senior Brand &amp; Strategic Consultant</div>
-          <div class="quest-dates">Jun 2023 → Feb 2024 · India</div>
-          <ul class="quest-bullets">
-            <li><b>₹50 L</b> ad spend · A/B tested with <b>Google Analytics</b> → <b>–42% CPC</b></li>
-            <li>Led institutional rebrand using <b>market research + Figma</b> prototypes</li>
-            <li>Executed B2B <b>CXO event</b> with record attendance</li>
-          </ul>
-          <div class="quest-meta">Side Quest · Cleared 🟢</div>
-        </button>
+        <div class="quest-flip" data-skin="pwc" style="--accent:#ff7900">
+          <button class="quest-block front">
+            <div class="quest-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/PricewaterhouseCoopers_Logo.svg" alt="PwC" loading="lazy" /></div>
+            <div class="quest-title">PwC</div>
+            <div class="quest-sub">Digital Strategy Consultant</div>
+            <div class="quest-dates">Jan 2020 → May 2023 · India</div>
+            <ul class="quest-bullets">
+              <li><b>+27%</b> advisory revenue via <b>Power BI</b> models for C-level stakeholders</li>
+              <li><b>Fortune 100</b> pitch creatives in <b>Illustrator</b> for multi-million $ deals</li>
+              <li><b>+35%</b> client engagement with <b>Premiere Pro</b> + <b>Adobe Animate</b> demos (Google, SAP)</li>
+            </ul>
+            <div class="quest-meta">Boss Fight · Cleared 🟢 · <span class="flip-hint">Click to reveal kit ↻</span></div>
+          </button>
+          <button class="quest-block back">
+            <div class="outfit-badge">EQUIPPED</div>
+            <div class="outfit-avatar pwc-avatar">
+              <div class="oa-hair"></div>
+              <div class="oa-head"></div>
+              <div class="oa-body"></div>
+              <div class="oa-tie"></div>
+              <div class="oa-armL"></div><div class="oa-armR"></div>
+              <div class="oa-legL"></div><div class="oa-legR"></div>
+              <div class="oa-prop">💼</div>
+            </div>
+            <div class="outfit-title">PwC Strategy Kit</div>
+            <ul class="outfit-list">
+              <li>🥋 Black blazer · sharp lines</li>
+              <li>💼 Briefcase of Insights</li>
+              <li>📊 Power BI dashboard buff</li>
+              <li>⭐ Stat: +27% Advisory Revenue</li>
+            </ul>
+            <div class="flip-back-hint">↺ Click to flip back</div>
+          </button>
+        </div>
 
-        <button class="quest-block" data-skin="brunel" style="--accent:#1f2a55">
-          <div class="quest-logo"><img src="https://www.google.com/s2/favicons?domain=brunel.ac.uk&sz=128" alt="Brunel" loading="lazy" /></div>
-          <div class="quest-title">Brunel University London</div>
-          <div class="quest-sub">MBA Candidate</div>
-          <div class="quest-dates">2025 → 2026 · London</div>
-          <ul class="quest-bullets">
-            <li>Global business, leadership &amp; finance with a <b>creative thesis lens</b></li>
-            <li>Parallel <b>B.S. Computer Science</b> at University of the People</li>
-            <li>Earlier: <b>B.A. Journalism &amp; Mass Comm.</b> · Amity University</li>
-          </ul>
-          <div class="quest-meta">Achievement Unlocking…</div>
-        </button>
+        <div class="quest-flip" data-skin="isb" style="--accent:#0a2d8f">
+          <button class="quest-block front">
+            <div class="quest-logo"><img src="https://www.isb.edu/apple-touch-icon.png" alt="ISB" loading="lazy" /></div>
+            <div class="quest-title">Indian School of Business</div>
+            <div class="quest-sub">Senior Brand &amp; Strategic Consultant</div>
+            <div class="quest-dates">Jun 2023 → Feb 2024 · India</div>
+            <ul class="quest-bullets">
+              <li><b>₹50 L</b> ad spend · A/B tested with <b>Google Analytics</b> → <b>–42% CPC</b></li>
+              <li>Led institutional rebrand using <b>market research + Figma</b> prototypes</li>
+              <li>Executed B2B <b>CXO event</b> with record attendance</li>
+            </ul>
+            <div class="quest-meta">Side Quest · Cleared 🟢 · <span class="flip-hint">Click to reveal kit ↻</span></div>
+          </button>
+          <button class="quest-block back">
+            <div class="outfit-badge">EQUIPPED</div>
+            <div class="outfit-avatar isb-avatar">
+              <div class="oa-hair"></div>
+              <div class="oa-head"></div>
+              <div class="oa-body"></div>
+              <div class="oa-tie"></div>
+              <div class="oa-armL"></div><div class="oa-armR"></div>
+              <div class="oa-legL"></div><div class="oa-legR"></div>
+              <div class="oa-prop">💻</div>
+            </div>
+            <div class="outfit-title">ISB Brand Kit</div>
+            <ul class="outfit-list">
+              <li>🎽 ISB navy uniform</li>
+              <li>💻 Laptop of Analytics</li>
+              <li>🎨 Figma + research buff</li>
+              <li>⭐ Stat: –42% CPC at ₹50L scale</li>
+            </ul>
+            <div class="flip-back-hint">↺ Click to flip back</div>
+          </button>
+        </div>
 
-        <button class="quest-block" data-skin="elen" style="--accent:#d4577d">
-          <div class="quest-logo elen-mark">Elen Rivas</div>
-          <div class="quest-title">Elen Rivas Beauty Clinic</div>
-          <div class="quest-sub">Digital Marketing · London</div>
-          <div class="quest-dates">Mar 2026 → Current</div>
-          <ul class="quest-bullets">
-            <li>Optimised UK <b>Google Ads</b> → <b>–34% CAC</b></li>
-            <li><b>24% ROAS</b> on full-funnel digital spend</li>
-            <li>Live ops · current role 💼</li>
-          </ul>
-          <div class="quest-meta">Active Quest 🟡</div>
-        </button>
+        <div class="quest-flip" data-skin="brunel" style="--accent:#1f2a55">
+          <button class="quest-block front">
+            <div class="quest-logo"><img src="https://www.google.com/s2/favicons?domain=brunel.ac.uk&sz=128" alt="Brunel" loading="lazy" /></div>
+            <div class="quest-title">Brunel University London</div>
+            <div class="quest-sub">MBA Candidate</div>
+            <div class="quest-dates">2025 → 2026 · London</div>
+            <ul class="quest-bullets">
+              <li>Global business, leadership &amp; finance with a <b>creative thesis lens</b></li>
+              <li>Parallel <b>B.S. Computer Science</b> at University of the People</li>
+              <li>Earlier: <b>B.A. Journalism &amp; Mass Comm.</b> · Amity University</li>
+            </ul>
+            <div class="quest-meta">Achievement Unlocking… · <span class="flip-hint">Click to reveal kit ↻</span></div>
+          </button>
+          <button class="quest-block back">
+            <div class="outfit-badge">EQUIPPED</div>
+            <div class="outfit-avatar brunel-avatar">
+              <div class="oa-hair"></div>
+              <div class="oa-head"></div>
+              <div class="oa-cap"></div>
+              <div class="oa-tassel"></div>
+              <div class="oa-body"></div>
+              <div class="oa-tie"></div>
+              <div class="oa-armL"></div><div class="oa-armR"></div>
+              <div class="oa-legL"></div><div class="oa-legR"></div>
+              <div class="oa-prop">🎓</div>
+            </div>
+            <div class="outfit-title">Brunel MBA Robe</div>
+            <ul class="outfit-list">
+              <li>🎓 Graduation cap + tassel</li>
+              <li>📚 Global MBA toolkit</li>
+              <li>🌍 London XP boost</li>
+              <li>⭐ Stat: Triple-degree stack</li>
+            </ul>
+            <div class="flip-back-hint">↺ Click to flip back</div>
+          </button>
+        </div>
+
+        <div class="quest-flip" data-skin="elen" style="--accent:#d4577d">
+          <button class="quest-block front">
+            <div class="quest-logo elen-mark">Elen Rivas</div>
+            <div class="quest-title">Elen Rivas Beauty Clinic</div>
+            <div class="quest-sub">Digital Marketing · London</div>
+            <div class="quest-dates">Mar 2026 → Current</div>
+            <ul class="quest-bullets">
+              <li>Optimised UK <b>Google Ads</b> → <b>–34% CAC</b></li>
+              <li><b>24% ROAS</b> on full-funnel digital spend</li>
+              <li>Live ops · current role 💼</li>
+            </ul>
+            <div class="quest-meta">Active Quest 🟡 · <span class="flip-hint">Click to reveal kit ↻</span></div>
+          </button>
+          <button class="quest-block back">
+            <div class="outfit-badge">EQUIPPED</div>
+            <div class="outfit-avatar elen-avatar">
+              <div class="oa-hair"></div>
+              <div class="oa-head"></div>
+              <div class="oa-body"></div>
+              <div class="oa-tie"></div>
+              <div class="oa-armL"></div><div class="oa-armR"></div>
+              <div class="oa-legL"></div><div class="oa-legR"></div>
+              <div class="oa-prop">💄</div>
+            </div>
+            <div class="outfit-title">Elen Rivas Glow Kit</div>
+            <ul class="outfit-list">
+              <li>💖 Rose campaign couture</li>
+              <li>💄 Lipstick of Conversion</li>
+              <li>📈 Funnel optimiser buff</li>
+              <li>⭐ Stat: –34% CAC · 24% ROAS</li>
+            </ul>
+            <div class="flip-back-hint">↺ Click to flip back</div>
+          </button>
+        </div>
+
       </div>
 
       <h3 class="section-subtitle">📜 Additional Achievements</h3>
