@@ -135,28 +135,28 @@ const SKINS = {
     top: '#1d1d1d', topAccent: '#ff7900',
     bottom: '#101010', shoes: '#000000',
     accessory: 'briefcase',
-    label: 'PwC Mode — Strategic Consultant'
+    label: 'PwC Mode — Digital Strategy Consultant'
   },
   isb: {
     skin: '#f1c1a4', hair: '#2a1a0d',
-    top: '#e2007a', topAccent: '#7a0040',
+    top: '#0a2d8f', topAccent: '#ffffff',
     bottom: '#1a1a1a', shoes: '#3b2412',
-    accessory: 'palette',
-    label: 'ISB Mode — Design & Marketing'
+    accessory: 'laptop',
+    label: 'ISB Mode — Sr. Brand & Strategic Consultant'
   },
   brunel: {
     skin: '#f1c1a4', hair: '#3b2412',
-    top: '#003a70', topAccent: '#ffd24a',
+    top: '#1f2a55', topAccent: '#ffd24a',
     bottom: '#000000', shoes: '#1a1a1a',
     accessory: 'cap',
-    label: 'Brunel Mode — MBA Graduate'
+    label: 'Brunel Mode — MBA Candidate, London'
   },
-  adobe: {
+  elen: {
     skin: '#f1c1a4', hair: '#3b2412',
-    top: '#fa0f00', topAccent: '#ffffff',
-    bottom: '#222222', shoes: '#000000',
-    accessory: 'brush',
-    label: 'Adobe Mode — Creative Toolkit'
+    top: '#f5cfd9', topAccent: '#d4577d',
+    bottom: '#3a1a25', shoes: '#2a1015',
+    accessory: 'lipstick',
+    label: 'Elen Rivas Mode — Digital Marketing, London'
   }
 };
 
@@ -231,17 +231,20 @@ function buildCharacter(skin) {
     const cs = box(0.6, 0.5, 0.18, '#5b3a1a'); cs.position.set(0.95, 0.0, 0.0);
     const handle = box(0.35, 0.08, 0.06, '#2a1a08'); handle.position.set(0.95, 0.32, 0);
     accessoryGroup.add(cs, handle);
-  } else if (skin.accessory === 'palette') {
-    const pl = box(0.8, 0.1, 0.5, '#d9b896'); pl.position.set(-0.95, 0.4, 0.0);
-    const dot1 = box(0.12, 0.08, 0.12, '#e2007a'); dot1.position.set(-1.1, 0.46, -0.1);
-    const dot2 = box(0.12, 0.08, 0.12, '#ffcc00'); dot2.position.set(-0.85, 0.46, 0.1);
-    const dot3 = box(0.12, 0.08, 0.12, '#3aa8ff'); dot3.position.set(-1.0, 0.46, 0.12);
-    accessoryGroup.add(pl, dot1, dot2, dot3);
-  } else if (skin.accessory === 'brush') {
-    const handle = box(0.1, 0.7, 0.1, '#6b3f1e'); handle.position.set(0.95, 0.4, 0);
-    const ferrule = box(0.14, 0.1, 0.14, '#c0c0c0'); ferrule.position.set(0.95, 0.8, 0);
-    const bristles = box(0.18, 0.2, 0.18, '#fa0f00'); bristles.position.set(0.95, 0.95, 0);
-    accessoryGroup.add(handle, ferrule, bristles);
+  } else if (skin.accessory === 'laptop') {
+    // ISB - silver laptop in hand
+    const base = box(0.7, 0.05, 0.55, '#c0c0c0'); base.position.set(0.95, 0.05, 0);
+    const lid = box(0.7, 0.5, 0.05, '#c0c0c0'); lid.position.set(0.95, 0.32, -0.25); lid.rotation.x = -0.2;
+    const screen = box(0.55, 0.4, 0.02, '#0a2d8f'); screen.position.set(0.95, 0.32, -0.22); screen.rotation.x = -0.2;
+    accessoryGroup.add(base, lid, screen);
+  } else if (skin.accessory === 'lipstick') {
+    // Elen Rivas - lipstick tube
+    const tube = box(0.16, 0.35, 0.16, '#d4577d'); tube.position.set(0.95, 0.25, 0);
+    const cap2 = box(0.18, 0.18, 0.18, '#3a1a25'); cap2.position.set(0.95, 0.55, 0);
+    const stick = box(0.1, 0.15, 0.1, '#a73355'); stick.position.set(0.95, 0.7, 0);
+    // small floating heart
+    const heart = box(0.18, 0.18, 0.05, '#ff5577'); heart.position.set(-0.95, 1.5, 0.3);
+    accessoryGroup.add(tube, cap2, stick, heart);
   }
 
   character.scale.set(0.01, 0.01, 0.01);
@@ -255,6 +258,10 @@ function setSkin(name) {
   currentSkin = name;
   buildCharacter(SKINS[name]);
   showToast(SKINS[name].label);
+
+  document.querySelectorAll('[data-skin]').forEach(el => {
+    el.classList.toggle('active', el.dataset.skin === name);
+  });
 }
 
 function resize() {
@@ -279,7 +286,6 @@ function animate() {
 
   if (parts.armL) parts.armL.rotation.x = Math.sin(t * 1.8) * 0.25;
   if (parts.armR) parts.armR.rotation.x = -Math.sin(t * 1.8) * 0.25;
-
   if (parts.hairPony) parts.hairPony.rotation.x = Math.sin(t * 1.8) * 0.2;
 
   controls.update();
@@ -300,27 +306,20 @@ function showToast(text) {
   showToast._tid = setTimeout(() => t.classList.remove('show'), 2400);
 }
 
-document.querySelectorAll('.quest-block').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.quest-block').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    setSkin(btn.dataset.skin);
-    document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-document.querySelectorAll('.event').forEach(ev => {
-  ev.addEventListener('click', () => {
-    const s = ev.dataset.skin;
+/* Hero skin pills + Quest blocks both wire to setSkin WITHOUT scrolling away */
+document.querySelectorAll('.skin-pill, .quest-block').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const s = btn.dataset.skin;
     if (s) setSkin(s);
   });
-  ev.style.cursor = 'pointer';
 });
 
+/* Tooltip for hotbar */
 const tip = document.getElementById('tooltip');
 document.querySelectorAll('.slot').forEach(s => {
   s.addEventListener('mouseenter', () => {
-    tip.textContent = s.dataset.tip || '';
+    tip.innerHTML = s.dataset.tip || '';
     tip.classList.add('show');
   });
   s.addEventListener('mousemove', e => {
@@ -330,16 +329,18 @@ document.querySelectorAll('.slot').forEach(s => {
   s.addEventListener('mouseleave', () => tip.classList.remove('show'));
 });
 
-document.querySelectorAll('.hud-nav a').forEach(a => {
+/* Smooth scroll for nav + Start Adventure button */
+document.querySelectorAll('.hud-nav a, a[data-scroll], a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const href = a.getAttribute('href');
-    if (href?.startsWith('#')) {
+    if (href?.startsWith('#') && href.length > 1) {
       e.preventDefault();
       document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     }
   });
 });
 
+/* Reveal-on-scroll */
 const io = new IntersectionObserver((entries) => {
   for (const en of entries) {
     if (en.isIntersecting) {
@@ -348,18 +349,19 @@ const io = new IntersectionObserver((entries) => {
       io.unobserve(en.target);
     }
   }
-}, { threshold: 0.12 });
+}, { threshold: 0.08 });
 
-document.querySelectorAll('.panel, .quest-block, .event, .realm, .dirt-card, .stats-card').forEach(el => {
+document.querySelectorAll('.panel, .quest-block, .ach, .realm, .dirt-card, .stats-card, .extra-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(30px)';
   el.style.transition = 'opacity .8s ease, transform .8s ease';
   io.observe(el);
 });
 
-const order = ['default', 'pwc', 'isb', 'brunel', 'adobe'];
+/* Spacebar cycles skins */
+const order = ['default', 'pwc', 'isb', 'brunel', 'elen'];
 window.addEventListener('keydown', (e) => {
-  if (e.code === 'Space') {
+  if (e.code === 'Space' && !['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)) {
     e.preventDefault();
     const i = order.indexOf(currentSkin);
     setSkin(order[(i + 1) % order.length]);
