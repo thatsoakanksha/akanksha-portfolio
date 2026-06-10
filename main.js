@@ -306,12 +306,37 @@ function showToast(text) {
   showToast._tid = setTimeout(() => t.classList.remove('show'), 2400);
 }
 
-/* Hero skin pills + Quest blocks both wire to setSkin WITHOUT scrolling away */
-document.querySelectorAll('.skin-pill, .quest-block').forEach(btn => {
+/* Skin pills (in hero) — morph only, never scroll */
+document.querySelectorAll('.skin-pill').forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
     const s = btn.dataset.skin;
     if (s) setSkin(s);
+  });
+});
+
+/* Quest cards — morph hero, scroll up so user SEES it, then scroll back */
+document.querySelectorAll('.quest-block').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const s = btn.dataset.skin;
+    if (!s) return;
+
+    // remember current scroll position
+    const returnY = window.scrollY;
+    const hero = document.getElementById('hero');
+    const heroVisible = hero.getBoundingClientRect().bottom > 100;
+
+    // morph immediately
+    setSkin(s);
+
+    // if hero isn't on screen, fly up to it briefly, then back
+    if (!heroVisible) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        window.scrollTo({ top: returnY, behavior: 'smooth' });
+      }, 2400);
+    }
   });
 });
 
